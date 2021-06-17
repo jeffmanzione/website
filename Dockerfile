@@ -17,7 +17,7 @@ RUN \
 RUN \
   apt-get -y install git
 
-CMD \
+RUN \
   git clone https://github.com/jeffreymanzione/website.git
 
 CMD flask run --host 0.0.0.0 --port $PORT
