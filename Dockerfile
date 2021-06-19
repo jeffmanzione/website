@@ -5,29 +5,33 @@
 
 ARG VARIANT="3.9"
 
-FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
+# FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
+FROM node:latest as node
 WORKDIR /usr/src
 
-ENV FLASK_APP=website/app 
+ENV FLASK_APP=app 
 
 EXPOSE $PORT
 
 RUN \
-  apt-get -y install git
+  apt update && \
+  apt-get -y install git python python3-pip
 
 RUN \
-  pip install flask
+  pip3 install flask
 
 RUN \
   git clone https://github.com/jeffreymanzione/website.git
-
-FROM node
-WORKDIR /usr/src
 
 RUN \
   npm install -g @angular/cli
 
 RUN \
-  cd website/client && ng build
+  npm install --save-dev @angular-devkit/build-angular
 
+WORKDIR /usr/src/website/client
+RUN \
+  npm run-script build
+
+WORKDIR /usr/src/website
 CMD flask run --host 0.0.0.0 --port $PORT
