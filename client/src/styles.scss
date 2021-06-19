@@ -1,11 +1,23 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto|Open+Sans:400italic,700italic,400,700);
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Roboto:wght@300;400;600&display=swap');
 
 h1 {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 400px;
+  font-weight: 300;
+  font-size: 60px;
 }
 
 body {
-  font-family: 'Roboto', serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 26px;
+  color: #fff;
+  background-color: #000;
+}
+
+p {
+  line-height: 32px;
+}
+
+.nowrap {
+  white-space: nowrap;
 }

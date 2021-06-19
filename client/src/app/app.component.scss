@@ -1,0 +1,39 @@
+.page-title {
+  text-align: center;
+  line-height: 50px;
+  margin-bottom: 60px;
+}
+
+.floating-center {
+  display: flex;
+  margin: auto;
+  width: 50%;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.main-text-container {
+  display: flex;
+  margin: 100px auto;
+  height: 1000%;
+}
+
+.main-text {
+  margin: auto;
+  padding: 32px 60px 32px 0px;
+  // width: 400px;
+  height:100%;
+}
+
+.face-image {
+  display: block;
+  min-width: 350px;
+  height: 350px;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;
+  filter: grayscale(70%) contrast(140%);
+}
