@@ -1,13 +1,15 @@
 from flask import Flask, send_from_directory
+import os
 
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__, static_folder=os.path.abspath(
+    '/usr/src/website/client/compiled/'))
 
 
 @app.route('/')
 def index():
-    return app.send_static_file('client/compiled/index.html')
+    return app.send_static_file('index.html')
 
 
-@app.route('/<path:path>')
-def angular_app(path):
-    return send_from_directory('client/compiled', path)
+@app.route('/<path:name>')
+def angular_app(name):
+    return app.send_static_file(name)

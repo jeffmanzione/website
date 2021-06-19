@@ -5,8 +5,8 @@
 
 ARG VARIANT="3.9"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
-
-ENV FLASK_APP=app 
+WORKDIR /usr/src/
+ENV FLASK_APP=app
 
 EXPOSE $PORT
 
