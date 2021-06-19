@@ -2,10 +2,12 @@ from flask import Flask, send_from_directory
 
 app = Flask(__name__, static_url_path='')
 
+
 @app.route('/')
 def index():
-    return send_from_directory('static', 'index.html')
+    return app.send_static_file('client/dist/client/index.html')
 
-@app.route('/static/<path:path>')
-def static_pages(path):
-    return send_from_directory('static', path)
+
+@app.route('/<path:path>')
+def angular_app(path):
+    return send_from_directory('client/dist/client', path)
