@@ -1,8 +1,8 @@
-from flask import Flask, send_from_directory
+from flask import Flask
 import os
 
 app = Flask(__name__, static_folder=os.path.abspath(
-    '/usr/src/website/client/compiled/'))
+    '/website/client-compiled/'))
 
 
 @app.route('/')

@@ -5,20 +5,19 @@
 
 ARG VARIANT="3.9"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
-WORKDIR /usr/src/
-ENV FLASK_APP=app
 
 EXPOSE $PORT
 
 RUN \
-  apt update && \
-  apt-get -y install git
-
-RUN \
   pip3 install flask
 
-RUN \
-  git clone https://github.com/jeffreymanzione/website.git
+COPY \
+  server /website/server
 
-WORKDIR /usr/src/website
+COPY \
+  client-compiled /website/client-compiled
+
+WORKDIR /website
+
+ENV FLASK_APP=server/app
 CMD flask run --host 0.0.0.0 --port $PORT
