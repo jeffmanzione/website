@@ -11,6 +11,9 @@ EXPOSE $PORT
 RUN \
   pip3 install flask
 
+RUN \
+  pip3 install psycopg2-binary
+
 COPY \
   server /website/server
 
