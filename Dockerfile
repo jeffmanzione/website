@@ -9,10 +9,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 EXPOSE $PORT
 
 RUN \
-  pip3 install flask
-
-RUN \
-  pip3 install psycopg2-binary
+  pip3 install flask psycopg2-binary waitress
 
 COPY \
   server /website/server
@@ -22,5 +19,4 @@ COPY \
 
 WORKDIR /website
 
-ENV FLASK_APP=server/app
-CMD flask run --host 0.0.0.0 --port $PORT
+CMD python3 server/app.py --host 0.0.0.0 --port $PORT
