@@ -6,7 +6,7 @@
 
 .floating-center {
   display: flex;
-  margin: auto;
+  margin: 0 auto;
   width: 50%;
 }
 
@@ -16,7 +16,7 @@
 
 .main-text-container {
   display: flex;
-  margin: 100px auto;
+  margin: 15% 15%;
   height: 1000%;
 }
 
@@ -31,7 +31,7 @@
 
 .face-image {
   display: block;
-  margin: auto;
+  // margin: auto;
   border-radius: 50%;
   overflow: hidden;
 

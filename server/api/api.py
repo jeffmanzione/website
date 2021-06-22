@@ -1,4 +1,6 @@
+import datetime
 import json
+import logging
 from flask import Response
 
 
@@ -8,10 +10,10 @@ class Api:
         self.app = app
         self.database = database
 
-    def register_method(self, fn, method_name=None):
+    def register_method(self, fn, method_name=None, method_types=['GET']):
         method_name = method_name or fn.__name__
         self.app.add_url_rule(self._get_api_endpoint_prefix(method_name),
-                              view_func=fn)
+                              view_func=fn, methods=method_types)
 
     def select(self, query):
         """Run a SQL query to select rows from table."""
@@ -20,7 +22,20 @@ class Api:
             cur.execute(query)
             records = [row for row in cur.fetchall()]
             cur.close()
-            return Response(json.dumps(records),  mimetype='application/json')
+            return Response(json.dumps(records, default=_json_dumps_fallback),  mimetype='application/json')
+
+    def mutate(self, statement_fmt, args_dict):
+        """Executes a SQL statement to mutate a table."""
+        conn = self.database.connect()
+        with conn.cursor() as cur:
+            logging.error(statement_fmt, args_dict)
+            cur.execute(statement_fmt, args_dict)
+            conn.commit()
+            cur.close()
 
     def _get_api_endpoint_prefix(self, method_name):
         return '/_/api/{api_name}.{method_name}'.format(api_name=self.api_name, method_name=method_name)
+
+
+def _json_dumps_fallback(obj):
+    return obj.__str__()

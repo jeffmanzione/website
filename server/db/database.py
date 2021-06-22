@@ -1,5 +1,11 @@
 import logging
+import os
 import psycopg2
+
+
+sslmode = 'require'
+if 'LOCAL_DB' in os.environ:
+    sslmode = 'disable'
 
 
 class Database:
@@ -8,10 +14,10 @@ class Database:
         self.conn = None
 
     def connect(self):
-        if not self.conn:
+        if not self.conn or self.conn.closed:
             try:
                 self.conn = psycopg2.connect(
-                    self.database_url, sslmode='require')
+                    self.database_url, sslmode=sslmode)
             except psycopg2.DatabaseError as e:
                 logging.error(e)
                 raise e
