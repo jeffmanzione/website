@@ -1,0 +1,20 @@
+# Create image:
+#   docker build -t "jeff-manzione-website" .
+#
+# Run in conjunction with:
+#   ng serve --host 0.0.0.0 --disable-host-check
+#
+# Volume assign your local website dir to /website to do live updates to server code.
+
+ARG VARIANT="3.9"
+FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
+
+RUN \
+  pip3 install flask psycopg2-binary waitress requests
+
+COPY \
+  server /website/server
+
+WORKDIR /website
+
+CMD python3 server/app.py --host 0.0.0.0 --port $PORT --dev True --dev-angular-app $ANGULAR_DEV_APP

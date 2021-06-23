@@ -1,13 +1,11 @@
-#create image
-#  docker build - < Dockerfile -t "jeff-manzione-website"   
-#create and run container
-#  docker run -p 5000:5000 -v C:/User/jeffr/git:/usr/src --env PORT=5000 --env FLASK_ENVIRONMENT=development jeff-manzione-website
+# Create image:
+#   docker build -t "jeff-manzione-website" .
 
 ARG VARIANT="3.9"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
 RUN \
-  pip3 install flask psycopg2-binary waitress
+  pip3 install flask psycopg2-binary waitress requests
 
 COPY \
   server /website/server
