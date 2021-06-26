@@ -8,7 +8,9 @@
     <img class="face-image" src="assets/face.png" />
   </div>
 </div>
-<div *ngFor="let comment of comments">
-  {{comment}}
+<div class="comments-container">
+  <div *ngFor="let comment of comments">
+    <comment [comment]="comment"></comment>
+  </div>
 </div>
 <router-outlet></router-outlet>

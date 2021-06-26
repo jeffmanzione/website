@@ -16,8 +16,13 @@
 
 .main-text-container {
   display: flex;
-  margin: 15% 15%;
   height: 1000%;
+  margin: 40px 0;
+}
+
+.comments-container {
+  max-width: 800px;
+  margin: auto;
 }
 
 .main-text {

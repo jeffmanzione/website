@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CommentsService } from 'src/service/comments/comments.service';
+import { Component, OnInit } from '@angular/core';
+import { CommentsService, Comment } from 'src/service/comments/comments.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +9,9 @@ import { CommentsService } from 'src/service/comments/comments.service';
 export class AppComponent implements OnInit {
   constructor(public commentsService: CommentsService) { }
 
-  public comments: Object[] = [];
-
+  public comments: Comment[] = [];
 
   ngOnInit(): void {
     this.commentsService.list().then((result) => this.comments = result);
   }
-
 }

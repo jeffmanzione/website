@@ -5,4 +5,4 @@ import { CommentsService } from './comments.service';
 @NgModule({
   providers: [CommentsService],
 })
-export class CommentsModule { }
+export class CommentsServiceModule { }

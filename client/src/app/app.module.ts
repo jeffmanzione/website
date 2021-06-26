@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommentsModule } from 'src/service/comments/comments.module';
-import { CommentsService } from 'src/service/comments/comments.service';
-
+import { CommentsServiceModule } from 'src/service/comments/comments.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CommentModule } from './comment/comment.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +12,11 @@ import { AppComponent } from './app.component';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    CommentsModule,
+    CommentModule,
+    CommentsServiceModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 
