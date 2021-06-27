@@ -5,6 +5,7 @@ import requests
 
 from db.database import Database
 from api.comments import CommentsApi
+from api.api_registry import ApiRegistry
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--host', help='The host address',
@@ -28,10 +29,13 @@ app.config.from_object(
 DATABASE_URL = args.database or os.environ['DATABASE_URL']
 database = Database(DATABASE_URL)
 
-CommentsApi(app, database)
+api_registry = ApiRegistry(app)
+api_registry.register(CommentsApi(app, database))
 
 
 @app.route('/')
+@app.route('/home')
+@app.route('/apis')
 def index():
     if args.dev:
         return _proxy()

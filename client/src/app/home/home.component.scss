@@ -1,0 +1,46 @@
+.page-title {
+  text-align: center;
+  line-height: 50px;
+  margin-bottom: 60px;
+}
+
+.floating-center {
+  display: flex;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.main-text-container {
+  display: flex;
+  height: 1000%;
+  margin: 40px 0;
+}
+
+.comments-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.main-text {
+  margin: auto;
+  height: 100%;
+
+  &:hover {
+    text-shadow: 0.5px 0.5px 0.5px white;
+  }
+}
+
+.face-image {
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+
+  filter: grayscale(70%) contrast(140%);
+  &:hover {
+    filter: grayscale(60%) contrast(130%);
+  }
+}

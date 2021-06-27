@@ -9,11 +9,13 @@ class Api:
         self.api_name = api_name or type(self).__name__
         self.app = app
         self.database = database
+        self.methods = {}
 
     def register_method(self, fn, method_name=None, method_types=['GET']):
         method_name = method_name or fn.__name__
-        self.app.add_url_rule(self._get_api_endpoint_prefix(method_name),
-                              view_func=fn, methods=method_types)
+        endpoint = self._get_api_endpoint_prefix(method_name)
+        self.methods[method_name] = endpoint
+        self.app.add_url_rule(endpoint, view_func=fn, methods=method_types)
 
     def select(self, query):
         """Run a SQL query to select rows from table."""
@@ -22,7 +24,7 @@ class Api:
             cur.execute(query)
             records = [row for row in cur.fetchall()]
             cur.close()
-            return Response(json.dumps(records, default=_json_dumps_fallback),  mimetype='application/json')
+            return Response(json.dumps(records, default=json_dumps_fallback),  mimetype='application/json')
 
     def mutate(self, statement_fmt, args_dict):
         """Executes a SQL statement to mutate a table."""
@@ -37,5 +39,7 @@ class Api:
         return '/_/api/{api_name}.{method_name}'.format(api_name=self.api_name, method_name=method_name)
 
 
-def _json_dumps_fallback(obj):
+def json_dumps_fallback(obj):
+    if isinstance(obj, Api):
+        return obj.methods
     return obj.__str__()

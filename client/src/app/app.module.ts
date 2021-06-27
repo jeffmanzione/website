@@ -1,25 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommentsServiceModule } from 'src/service/comments/comments.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CommentModule } from './comment/comment.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApisModule } from './apis/apis.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    ApisModule,
+    HomeModule,
     AppRoutingModule,
     BrowserModule,
-    CommentModule,
-    CommentsServiceModule,
     BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-
-}
+export class AppModule { }
