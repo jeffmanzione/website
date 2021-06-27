@@ -7,7 +7,7 @@ import { CommentsService, Comment } from 'src/service/comments/comments.service'
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(public commentsService: CommentsService) { }
+  constructor(private commentsService: CommentsService) { }
 
   public comments: Comment[] = [];
 

@@ -1,5 +1,6 @@
-<div class="comment-container">
-  <!-- <div class="comment-item">{{comment?.messageId}}</div> -->
-  <div class="comment-item">{{comment?.message}}</div>
-  <div class="comment-item right">- {{comment?.username}} @ {{comment?.createdOn}}</div>
-</div>
+<mat-card class="comment-container">
+  <mat-card-content>
+    <div class="comment-item">{{comment?.message}}</div>
+    <div class="comment-item right">- {{comment?.username}} @ {{comment?.createdOn}}</div>
+  </mat-card-content>
+</mat-card>
