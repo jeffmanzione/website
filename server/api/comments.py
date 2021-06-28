@@ -13,13 +13,13 @@ INSERT_QUERY_FMT = 'INSERT INTO Comments (username, message, created_on) VALUES 
 class CommentsApi(Api):
     def __init__(self, app, database):
         super().__init__(app, database)
-        self.register_method(self.list)
-        self.register_method(self.insert, method_types=['POST'])
+        self.register_method(self._list_comments, 'list')
+        self.register_method(self._insert_comment, method_types=['POST'])
 
-    def list(self):
+    def _list_comments(self):
         return self.select(LIST_QUERY)
 
-    def insert(self):
+    def _insert_comment(self):
         data = request.get_json()
         if not _valid_insert(data):
             return Response('BAD', status=400)

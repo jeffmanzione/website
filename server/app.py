@@ -29,7 +29,7 @@ app.config.from_object(
 DATABASE_URL = args.database or os.environ['DATABASE_URL']
 database = Database(DATABASE_URL)
 
-api_registry = ApiRegistry(app)
+api_registry = ApiRegistry(app, database)
 api_registry.register(CommentsApi(app, database))
 
 

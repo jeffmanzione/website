@@ -14,6 +14,7 @@ class Api:
     def register_method(self, fn, method_name=None, method_types=['GET']):
         method_name = method_name or fn.__name__
         endpoint = self._get_api_endpoint_prefix(method_name)
+        print(endpoint)
         self.methods[method_name] = endpoint
         self.app.add_url_rule(endpoint, view_func=fn, methods=method_types)
 
