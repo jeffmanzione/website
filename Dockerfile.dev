@@ -1,5 +1,5 @@
 # Create image:
-#   docker build -t "jeff-manzione-website" .
+#   docker build -t "jeff-manzione-website" -f Docerfile.dev .
 #
 # Run in conjunction with:
 #   ng serve --host 0.0.0.0 --disable-host-check

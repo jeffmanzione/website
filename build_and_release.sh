@@ -1,4 +1,4 @@
-rm -r -F client-compiled
+rm -R -f client-compiled
 cd client
 ng build --output-path ../client-compiled
 cd ..

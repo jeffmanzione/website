@@ -5,7 +5,7 @@
 }
 
 .floating-center {
-  display: flex;
+  display: block;
   margin: 0 auto;
   width: 50%;
 }
@@ -16,8 +16,9 @@
 
 .main-text-container {
   display: flex;
-  height: 1000%;
-  margin: 40px 0;
+  height: 100%;
+  margin: 40px auto;
+  max-width: 800px;
 }
 
 .comments-container {
@@ -26,8 +27,9 @@
 }
 
 .main-text {
-  margin: auto;
+  margin: auto 40px auto 0;
   height: 100%;
+  font-size: 20px;
 
   &:hover {
     text-shadow: 0.5px 0.5px 0.5px white;
@@ -36,6 +38,8 @@
 
 .face-image {
   display: block;
+  min-width: 400px;
+  min-height: 400px;
   border-radius: 50%;
   overflow: hidden;
 
