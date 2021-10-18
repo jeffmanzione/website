@@ -18,12 +18,12 @@ class Api:
         self.methods[method_name] = endpoint
         self.app.add_url_rule(endpoint, view_func=fn, methods=method_types)
 
-    def select(self, query):
+    def select(self, query, row_process_fn=lambda x: x):
         """Run a SQL query to select rows from table."""
         conn = self.database.connect()
         with conn.cursor() as cur:
             cur.execute(query)
-            records = [row for row in cur.fetchall()]
+            records = [row_process_fn(row) for row in cur.fetchall()]
             cur.close()
             return Response(json.dumps(records, default=json_dumps_fallback),  mimetype='application/json')
 

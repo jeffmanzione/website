@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApisModule } from './apis/apis.module';
 import { HomeModule } from './home/home.module';
+import { ElectionsModule } from './elections/elections.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { HomeModule } from './home/home.module';
   imports: [
     ApisModule,
     HomeModule,
+    ElectionsModule,
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,

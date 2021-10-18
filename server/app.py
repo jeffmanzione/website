@@ -4,8 +4,9 @@ import os
 import requests
 
 from db.database import Database
-from api.comments import CommentsApi
 from api.api_registry import ApiRegistry
+from api.comments import CommentsApi
+from api.elections import ElectionsApi
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--host', help='The host address',
@@ -31,11 +32,13 @@ database = Database(DATABASE_URL)
 
 api_registry = ApiRegistry(app, database)
 api_registry.register(CommentsApi(app, database))
+api_registry.register(ElectionsApi(app, database))
 
 
 @app.route('/')
 @app.route('/home')
 @app.route('/apis')
+@app.route('/elections')
 def index():
     if args.dev:
         return _proxy()
@@ -43,7 +46,8 @@ def index():
         return angular_app('index.html')
 
 
-@app.route('/<path:name>')
+@app.route('/<path:name>',
+           methods=['GET', 'POST', 'DELETE', 'PUT', 'PATCH'])
 def angular_app(name):
     if args.dev:
         return _proxy()
