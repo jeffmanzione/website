@@ -2,14 +2,34 @@
   <div>Hello, world!</div>
   <table mat-table [dataSource]="electionResults" class="election-results-table">
     <ng-container matColumnDef="state">
-      <th mat-header-cell *matHeaderCellDef>State</th>
+      <th mat-header-cell *matHeaderCellDef class="election-results-col">State</th>
       <td mat-cell *matCellDef="let element">{{element.state}}</td>
     </ng-container>
     <ng-container matColumnDef="sample-size">
-      <th mat-header-cell *matHeaderCellDef>Sample Size</th>
+      <th mat-header-cell *matHeaderCellDef class="election-results-col">Sample Size</th>
       <td mat-cell *matCellDef="let element">{{element.sampleSize}}</td>
     </ng-container>
-    
+    <ng-container matColumnDef="vote-dem-pp">
+      <th mat-header-cell *matHeaderCellDef class="election-results-col">Democrat (%)</th>
+      <td mat-cell *matCellDef="let element" [class.emphasis]="element.voteDemPp > element.voteRepPp">
+        {{percentText(element.voteDemPp)}}</td>
+    </ng-container>
+    <ng-container matColumnDef="vote-rep-pp">
+      <th mat-header-cell *matHeaderCellDef class="election-results-col">Republican (%)</th>
+      <td mat-cell *matCellDef="let element" [class.emphasis]="element.voteDemPp < element.voteRepPp">
+        {{percentText(element.voteRepPp)}}</td>
+    </ng-container>
+    <ng-container matColumnDef="favored-party">
+      <th mat-header-cell *matHeaderCellDef class="election-results-col">Favored</th>
+      <td mat-cell *matCellDef="let element" [class.rep]="element.favoredParty === 'REP'"
+        [class.dem]="element.favoredParty === 'DEM'">
+        {{element.favoredParty}}</td>
+    </ng-container>
+    <ng-container matColumnDef="diff-pp">
+      <th mat-header-cell *matHeaderCellDef class="election-results-col">Spread (%)</th>
+      <td mat-cell *matCellDef="let element" [class.emphasis]="element.diffPp - element.stderrPp < 0">
+        {{spreadPercentText(element)}}</td>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>

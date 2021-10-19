@@ -1,0 +1,32 @@
+table {
+  border-radius: 16px;
+  overflow: hidden;
+  th {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+  }
+}
+
+.election-results-table {
+  margin: 20px;
+  padding: 8px;
+}
+
+.election-results-col {
+  width: 150px;
+}
+
+.emphasis {
+  font-weight: 600;
+  color: darkslategray;
+}
+
+.rep {
+  font-weight: 600;
+  color: red;
+}
+
+.dem {
+  font-weight: 600;
+  color: blue;
+}
