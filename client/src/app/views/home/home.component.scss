@@ -6,8 +6,17 @@
 
 .floating-center {
   display: block;
+  
   margin: 0 auto;
   width: 50%;
+  min-width: 800px;
+
+  @media only screen and (max-device-width: 800px) {
+    padding: 32px;
+    max-width: 400px;
+    min-width: 0;
+    width: initial;
+  }
 }
 
 .name {
@@ -17,7 +26,6 @@
 h1, p {
   margin-top: 30px;
 }
-
 
 h1 {
   font-size: 34px;
@@ -30,12 +38,28 @@ p {
   line-height: 40px;
 }
 
+@media only screen and (max-device-width: 800px) {
+  h1 {
+    font-size: 20px;
+    margin-top: 0px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
 .main-text-container {
   text-align: justify;
   text-justify: inter-word;
   display: flex;
   margin: 40px auto;
   max-width: 1000px;
+
+  @media only screen and (max-device-width: 800px) {
+    display: block;
+    margin: 0 auto 20px auto;
+  }
 }
 
 .single-col-text {
@@ -50,12 +74,28 @@ p {
   &:hover {
     text-shadow: 0.5px 0.5px 0.5px white;
   }
+
+  @media only screen and (max-device-width: 800px) {
+    margin: auto 0;
+  }
 }
 
 .face-image {
   display: block;
+
   min-width: 400px;
+  max-width: 400px;
   min-height: 400px;
+  max-height: 400px;
+
+  @media only screen and (max-device-width: 800px) {
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    margin: auto;
+  }
+
   border-radius: 50%;
   overflow: hidden;
 
