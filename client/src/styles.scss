@@ -37,31 +37,37 @@ $client-theme: mat.define-light-theme(
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Roboto:wght@300;400;600&display=swap");
 
 h1 {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 60px;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 26px;
-  color: #fff;
-  background-color: rgb(31, 31, 31);
+  color: #222;
+  background-color: #eee;
+  margin: 0;
 }
 
 p {
   line-height: 32px;
 }
 
+a {
+  font-family: 'Open Sans', sans-serif;
+  color: #48adff;
+  font-weight: 500;
+  &:link {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .nowrap {
   white-space: nowrap;
 }
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -6,12 +6,14 @@ import { ElectionResult, ElectionsService } from 'src/service/elections/election
   templateUrl: 'elections.component.html',
   styleUrls: ['elections.component.scss'],
 })
-export class ElectionsComponent implements OnInit {
-  electionResults: ElectionResult[] = [];
+export class ElectionsComponent {
+  public electionResults: ElectionResult[] = [];
 
-  constructor(private electionsService: ElectionsService) { }
+  constructor(private electionsService: ElectionsService) {
+    this.fetchElectionResults();
+  }
 
-  ngOnInit(): void {
-    this.electionsService.list().then(results => this.electionResults = results);
+  async fetchElectionResults() {
+    this.electionResults = await this.electionsService.list();
   }
 }

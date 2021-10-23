@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="electionResults" class="election-results-table">
+<table mat-table [dataSource]="viewModel.electionResults" class="election-results-table">
   <ng-container matColumnDef="state">
     <th mat-header-cell *matHeaderCellDef class="election-results-col">State</th>
     <td mat-cell *matCellDef="let element">{{element.state}}</td>
@@ -24,9 +24,19 @@
       {{element.favoredParty}}</td>
   </ng-container>
   <ng-container matColumnDef="diff-pp">
-    <th mat-header-cell *matHeaderCellDef class="election-results-col">Spread (%)</th>
+    <th mat-header-cell *matHeaderCellDef class="election-results-col-wide">Spread (%)</th>
     <td mat-cell *matCellDef="let element" [class.emphasis]="element.diffPp - element.stderrPp < 0">
       {{spreadPercentText(element)}}</td>
+  </ng-container>
+  <ng-container matColumnDef="dem-win-pp">
+    <th mat-header-cell *matHeaderCellDef class="election-results-col">Democrat Win Simulations (%)</th>
+    <td mat-cell *matCellDef="let element" [class.emphasis]="element.demWinPp > element.repWinPp">
+      {{percentText(element.demWinPp)}}</td>
+  </ng-container>
+  <ng-container matColumnDef="rep-win-pp">
+    <th mat-header-cell *matHeaderCellDef class="election-results-col">Republican Win Simulations (%)</th>
+    <td mat-cell *matCellDef="let element" [class.emphasis]="element.repWinPp > element.demWinPp">
+      {{percentText(element.repWinPp)}}</td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

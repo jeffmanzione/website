@@ -39,4 +39,19 @@ export class ElectionResult {
   toString(): string {
     return JSON.stringify(this);
   }
+
+  public clone(): ElectionResult {
+    return new ElectionResult([
+      this.state,
+      this.sampleSize,
+      this.voteDemPp,
+      this.voteRepPp,
+      this.favoredParty,
+      this.diffPp,
+      this.stderrPp,
+      this.simulationCount,
+      this.demWinPp,
+      this.repWinPp,
+    ]);
+  }
 }
