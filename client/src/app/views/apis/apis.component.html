@@ -1,13 +1,5 @@
-
 <div>
-<mat-card class="card" *ngFor="let apiRef of apiRefs">
-  <mat-card-header>
-    <div mat-card-avatar class="header-image"></div>
-    <mat-card-title>{{apiRef.name}}</mat-card-title>
-    <mat-card-subtitle>API</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content *ngFor="let apiMethodRef of apiRef.methods">
-    <p class="method-title">{{apiMethodRef.method}} <a href="{{apiMethodRef.url}}">{{apiMethodRef.url}}</a></p>
-  </mat-card-content>
-</mat-card>
+  <ng-container *ngFor="let apiRef of viewModel.apiRefs">
+    <api-card [apiRef]="apiRef"></api-card>
+  </ng-container>
 </div>

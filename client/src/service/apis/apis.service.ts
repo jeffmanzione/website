@@ -36,5 +36,4 @@ export class ApiRef {
       this.methods.push(new ApiMethodRef(method, url));
     }
   }
-
 }

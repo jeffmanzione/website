@@ -4,10 +4,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ApisServiceModule } from "src/service/apis/apis.module";
 import { CommonModule } from "@angular/common";
+import { ApiCardComponent } from "./api-card.component";
 
 @NgModule({
-  declarations: [ApisComponent],
-  exports: [ApisComponent],
+  declarations: [ApisComponent, ApiCardComponent],
+  exports: [ApisComponent, ApiCardComponent],
   imports: [
     ApisServiceModule,
     CommonModule,
